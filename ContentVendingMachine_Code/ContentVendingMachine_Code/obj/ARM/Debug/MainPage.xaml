@@ -6,8 +6,27 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
 
-    <Grid Background="Black">
+        <Style x:Key="BasicTextStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}">
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid x:ConnectionId='1' x:Name="Input" Grid.Row="0" Margin="0,0,370,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:ConnectionId='2' x:Name="Synopsis" TextWrapping="Wrap" Grid.Row="0" Style="{StaticResource BasicTextStyle}" HorizontalAlignment="center" Margin="0,20,0,0" Grid.RowSpan="2">
+        		<Run Text="This sample scenario shows when a device enters or leaves proximity communication range."/>
+            </TextBlock>
+            <StackPanel Orientation="Horizontal" Margin="0,50,0,-40" Grid.Row="1"/>
+        </Grid>
     </Grid>
 </Page>
 

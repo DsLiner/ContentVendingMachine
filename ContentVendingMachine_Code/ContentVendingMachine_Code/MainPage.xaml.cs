@@ -13,6 +13,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using Windows.Networking.Proximity;
+using Windows.UI.Core;
+
 // 빈 페이지 항목 템플릿은 http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 에 문서화되어 있습니다.
 
 namespace ContentVendingMachine_Code
@@ -22,9 +25,52 @@ namespace ContentVendingMachine_Code
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private Windows.Networking.Proximity.ProximityDevice _proximityDevice;
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            Synopsis.Text += "\n\n";
+            try
+            {
+                _proximityDevice = ProximityDevice.GetDefault();
+            }
+            catch(Exception e)
+            {
+                Synopsis.Text += e.ToString() + "\n\n";
+            }
+
+            if (_proximityDevice != null)
+            {
+                _proximityDevice.DeviceArrived += DeviceArrived;
+                _proximityDevice.DeviceDeparted += DeviceDeparted;
+            }
+            else
+            {
+                Synopsis.Text += "No proximity device found\n";
+            }
+        }
+
+        void DeviceArrived(ProximityDevice proximityDevice)
+        {
+            var ignored = Dispatcher.RunAsync(CoreDispatcherPriority.Low, () =>
+            {
+                Synopsis.Text += "Proximate device arrived\n";
+            });
+        }
+
+        void DeviceDeparted(ProximityDevice proximityDevice)
+        {
+            var ignored = Dispatcher.RunAsync(CoreDispatcherPriority.Low, () =>
+            {
+                Synopsis.Text += "Proximate device departed\n";
+            });
+        }
+
+        private void InputTextBlock1_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

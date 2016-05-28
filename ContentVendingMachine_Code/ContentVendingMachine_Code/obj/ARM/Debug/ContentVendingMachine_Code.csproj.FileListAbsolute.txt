@@ -195,3 +195,4 @@ C:\Users\Surface\Documents\GitHub\ContentVendingMachine\ContentVendingMachine_Co
 C:\Users\Surface\Documents\GitHub\ContentVendingMachine\ContentVendingMachine_Code\ContentVendingMachine_Code\obj\ARM\Debug\resources.en-us.resfiles
 C:\Users\Surface\Documents\GitHub\ContentVendingMachine\ContentVendingMachine_Code\ContentVendingMachine_Code\obj\ARM\Debug\resources.en-us.resfiles.intermediate
 C:\Users\Surface\Documents\GitHub\ContentVendingMachine\ContentVendingMachine_Code\ContentVendingMachine_Code\obj\ARM\Debug\ProjectArchitectures.txt
+C:\Users\Surface\Documents\GitHub\ContentVendingMachine\ContentVendingMachine_Code\ContentVendingMachine_Code\obj\ARM\Debug\ContentVendingMachine_Code.csprojResolveAssemblyReference.cache
