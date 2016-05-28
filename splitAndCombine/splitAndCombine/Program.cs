@@ -10,25 +10,29 @@ namespace splitAndCombine
 {
     class Program
     {
-        static int buffer_size = 1024 * 1024; // 버퍼 사이즈
+        static int buffer_size = 1024 * 1024 * 10; // 버퍼 사이즈
+
+        static string originalFilePath = @"C:\Users\Surface\Desktop\";
+        static string originalFileName = "test.mp4";
+
+        static string tempFilePath = @"C:\Users\Surface\Desktop\temp\";
+        static string tempFileName = "temp";
+
+        static string cloneFilePath = @"C:\Users\Surface\Desktop\";
+        static string cloneFileName = "clone.mp4";
 
         static void Main(string[] args)
         {
             try
             {
-                string filePath = "C:\\Users\\Surface\\Desktop\\";
-                string fileName = "Distributed Event-Triggered Control for Multi-Agent Systems.pdf";
                 //FileStream file = new FileStream(filePath + fileName, FileMode.OpenOrCreate);
-                StreamReader fi = new StreamReader(filePath + fileName);
-
-                string nFilePath = "C:\\Users\\Surface\\Desktop\\temp\\";
-                string nFileName = "temp0";
+                Stream sr = new FileStream(originalFilePath + originalFileName, FileMode.Open, FileAccess.Read);
 
                 //파일을 분할하여 저장한다
-                splitFile(nFilePath, nFileName, fi);
+                splitFile(sr);
 
                 //분할된 파일을 합친다
-                combineFile(fileName, nFilePath);
+                combineFile();
             }
             catch (Exception e)
             {
@@ -36,7 +40,7 @@ namespace splitAndCombine
             }
         }
 
-        private static void splitFile(string nFilePath, string nFileName, StreamReader fi)
+        private static void splitFile(Stream sr)
         {
             try
             {
@@ -47,36 +51,32 @@ namespace splitAndCombine
                 int fileIdx = 0; // 파일 인덱스
 
                 //BufferedStream bfi = new BufferedStream(file); 필요가 없는듯
-                char[] readBuffer = new char[buffer_size];
+                byte[] buffer = null;
+                Stream sw = null;
 
                 //FileStream nFile = new FileStream(nFilePath + nFileName, FileMode.OpenOrCreate);
-                StreamWriter fo = new StreamWriter(nFilePath + nFileName);
 
                 do
                 {
-                    readCnt = fi.Read(readBuffer, 0, buffer_size); // bfi를 사용하면 문자를 읽을수가 없다. 바이트만 가능
+                    buffer = new byte[buffer_size];
+
+                    readCnt = sr.Read(buffer, 0, buffer_size); // bfi를 사용하면 문자를 읽을수가 없다. 바이트만 가능
                     if (readCnt == 0)
                     {
                         break;
                     }
 
-                    fo.Write(readBuffer, 0, readCnt);
+                    sw = new FileStream(tempFilePath + tempFileName + (fileIdx++) + "._tmp", FileMode.Create, FileAccess.Write);
+
+                    sw.Write(buffer, 0, readCnt);
+                    
+                    sw.Flush();
+                    sw.Dispose();
 
                     writeCnt = readCnt;
-
-                    if (readCnt == buffer_size)
-                    {
-                        fo.Flush();
-                        fo.Dispose();
-
-                        // FileStream nfile = new FileStream(nFilePath + nFileName + (++fileIdx) + "._tmp", FileMode.OpenOrCreate);
-                        fo = new StreamWriter(nFilePath + nFileName + (++fileIdx) + "._tmp");
-                    }
                 } while (true);
 
-                fi.Dispose();
-                fo.Flush();
-                fo.Dispose();
+                sr.Dispose();
                 System.Console.WriteLine("##########나누기완료##########");
             }
             catch (Exception e)
@@ -84,13 +84,15 @@ namespace splitAndCombine
                 System.Console.WriteLine(e);
             }
         }
-        private static void combineFile(string oriFileName, string nFilePath)
+        private static void combineFile()
         {
 
             // FileStream nFiles = new FileStream(nFilePath, FileMode.OpenOrCreate); // file open
             int fileCounter = 0;
+            byte[] buffer = null;
+            Stream sr = null;
 
-            System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(nFilePath); // DirectoryInfo 객체 생성
+            System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(tempFilePath); // DirectoryInfo 객체 생성
             foreach (var item in di.GetFiles())
             {
                 fileCounter++;
@@ -100,27 +102,26 @@ namespace splitAndCombine
 
             for (int i = 0; i < fileCounter; i++)
             {
-                files = Directory.GetFiles(nFilePath);
+                files = Directory.GetFiles(tempFilePath);
             }
 
-            StreamWriter nFo = new StreamWriter("C:\\Users\\Surface\\Desktop\\sum.pdf"); // file 읽기
+            Stream sw = new FileStream(cloneFilePath + cloneFileName, FileMode.Create, FileAccess.Write); // file 읽기
 
             for (int i = 0; i < files.Length; i++)
             {
+                sr = new FileStream(files[i], FileMode.Open, FileAccess.Read);
 
-                StreamReader nFi = new StreamReader(files[i]);
-
-                char[] buf = new char[buffer_size];
+                buffer = new byte[buffer_size];
                 int readCnt = 0;
 
-                while ((readCnt = nFi.Read(buf, 0, buffer_size)) != 0) // offset을 4096으로 두고 문자 하나씩 Read
+                while ((readCnt = sr.Read(buffer, 0, buffer_size)) != 0) // offset을 4096으로 두고 문자 하나씩 Read
                 {
-                    nFo.Write(buf, 0, readCnt);
+                    sw.Write(buffer, 0, readCnt);
                 }
             }
 
-            nFo.Flush();
-            nFo.Dispose();
+            sw.Flush();
+            sw.Dispose();
             System.Console.WriteLine("##########합치기완료##########");
         }
     }

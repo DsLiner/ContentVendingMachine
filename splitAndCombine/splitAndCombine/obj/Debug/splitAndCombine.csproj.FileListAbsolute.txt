@@ -4,3 +4,9 @@ c:\users\surface\documents\visual studio 2015\Projects\splitAndCombine\splitAndC
 c:\users\surface\documents\visual studio 2015\Projects\splitAndCombine\splitAndCombine\obj\Debug\splitAndCombine.csprojResolveAssemblyReference.cache
 c:\users\surface\documents\visual studio 2015\Projects\splitAndCombine\splitAndCombine\obj\Debug\splitAndCombine.exe
 c:\users\surface\documents\visual studio 2015\Projects\splitAndCombine\splitAndCombine\obj\Debug\splitAndCombine.pdb
+C:\Users\Surface\Documents\GitHub\ContentVendingMachine\splitAndCombine\splitAndCombine\bin\Debug\splitAndCombine.exe.config
+C:\Users\Surface\Documents\GitHub\ContentVendingMachine\splitAndCombine\splitAndCombine\obj\Debug\splitAndCombine.exe
+C:\Users\Surface\Documents\GitHub\ContentVendingMachine\splitAndCombine\splitAndCombine\obj\Debug\splitAndCombine.pdb
+C:\Users\Surface\Documents\GitHub\ContentVendingMachine\splitAndCombine\splitAndCombine\bin\Debug\splitAndCombine.exe
+C:\Users\Surface\Documents\GitHub\ContentVendingMachine\splitAndCombine\splitAndCombine\bin\Debug\splitAndCombine.pdb
+C:\Users\Surface\Documents\GitHub\ContentVendingMachine\splitAndCombine\splitAndCombine\obj\Debug\splitAndCombine.csprojResolveAssemblyReference.cache
