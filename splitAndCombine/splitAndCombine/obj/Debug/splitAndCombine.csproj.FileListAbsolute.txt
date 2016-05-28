@@ -1,0 +1,6 @@
+c:\users\surface\documents\visual studio 2015\Projects\splitAndCombine\splitAndCombine\bin\Debug\splitAndCombine.exe.config
+c:\users\surface\documents\visual studio 2015\Projects\splitAndCombine\splitAndCombine\bin\Debug\splitAndCombine.exe
+c:\users\surface\documents\visual studio 2015\Projects\splitAndCombine\splitAndCombine\bin\Debug\splitAndCombine.pdb
+c:\users\surface\documents\visual studio 2015\Projects\splitAndCombine\splitAndCombine\obj\Debug\splitAndCombine.csprojResolveAssemblyReference.cache
+c:\users\surface\documents\visual studio 2015\Projects\splitAndCombine\splitAndCombine\obj\Debug\splitAndCombine.exe
+c:\users\surface\documents\visual studio 2015\Projects\splitAndCombine\splitAndCombine\obj\Debug\splitAndCombine.pdb
