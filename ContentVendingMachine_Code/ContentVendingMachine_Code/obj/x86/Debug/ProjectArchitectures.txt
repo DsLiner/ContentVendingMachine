@@ -1,0 +1,1 @@
+C:\Users\Surface\Documents\GitHub\ContentVendingMachine\ContentVendingMachine_Code\ContentVendingMachine_Code\ContentVendingMachine_Code.csproj;x86
