@@ -45,21 +45,22 @@ namespace splitAndCombine
                 else
                 {
                     System.IO.File.Create(serverDirectory + txtFileName);
+                    System.IO.File.WriteAllText(serverDirectory + txtFileName, originalFileName);
+                    System.Console.WriteLine("##########파일 생성 완료##########");
                 }
 
                 splitFile(sr); //파일을 분할하여 저장한다
 
                 distributeFile(); // 분할된 파일을 각 폴더에 분배한다
 
-                combineFile(); //분배된 파일을 조합하여 합친다
+                //combineFile(); //분배된 파일을 조합하여 합친다
             }
             catch (Exception e)
             {
                 System.Console.WriteLine(e);
             }
         }
-
-
+        
         private static void splitFile(Stream sr)
         {
             try
@@ -107,9 +108,7 @@ namespace splitAndCombine
                 System.Console.WriteLine(e);
             }
         }
-
-
-
+        
         private static void combineFile()
         {
 
@@ -172,9 +171,7 @@ namespace splitAndCombine
             System.IO.Directory.Delete(@"C:\Users\USER\Desktop\temp", true); // 임시 폴더 삭제
             System.Console.WriteLine("##########합치기완료##########");
         }
-
-
-
+        
         private static void distributeFile()
         {
 
