@@ -10,29 +10,35 @@ namespace splitAndCombine
 {
     class Program
     {
-        static string originalFilePath = @"C:\Users\USER\Desktop\test\";
+        static string originalFilePath = @"C:\Users\Surface\Desktop\test\";
         static string originalFileName = "S04E01.mkv";
 
-        static string tempFilePath = @"C:\Users\USER\Desktop\temp\";
-        static string tempFilePath1 = @"C:\Users\USER\Desktop\temp\temp1\";
-        static string tempFilePath2 = @"C:\Users\USER\Desktop\temp\temp2\";
-        static string tempFilePath3 = @"C:\Users\USER\Desktop\temp\temp3\";
-        static string tempFilePath4 = @"C:\Users\USER\Desktop\temp\temp4\";
+        static string tempFilePath = @"C:\Users\Surface\Desktop\temp\";
+        static string tempFilePath1 = @"C:\Users\Surface\Desktop\temp\temp1\";
+        static string tempFilePath2 = @"C:\Users\Surface\Desktop\temp\temp2\";
+        static string tempFilePath3 = @"C:\Users\Surface\Desktop\temp\temp3\";
+        static string tempFilePath4 = @"C:\Users\Surface\Desktop\temp\temp4\";
 
-        static string cloneFilePath = @"C:\Users\USER\Desktop\"; // 나중에 복사 파일도 temp안으로 저장되도록 수정하기
+        static string cloneFilePath = @"C:\Users\Surface\Desktop\"; // 나중에 복사 파일도 temp안으로 저장되도록 수정하기
         static string cloneFileName = "S04E01.mkv";
 
-        static string serverDirectory = @"C:\Users\USER\Desktop\server\";
+        static string serverDirectory = @"C:\Users\Surface\Desktop\server\";
         static string txtFileName = "FileList.txt";
 
-        static FileInfo fInfo = new FileInfo(@"C:\Users\USER\Desktop\test\" + "S04E01.mkv");// 파일의 정보를 담는 객체
-        static long fileSize = fInfo.Length; // 파일의 총 사이즈를 담는 변수
+        static FileInfo fInfo;// 파일의 정보를 담는 객체
+        static long fileSize; // 파일의 총 사이즈를 담는 변수
 
-        static int buffer_size = ((int)fileSize / 20) + 1; // 버퍼 사이즈 = 파일 사이즈 / 20
+        static int buffer_size ; // 버퍼 사이즈 = 파일 사이즈 / 20
 
-
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            //cloneFileName = originalFileName = System.Console.ReadLine();
+            
+            FileInfo fInfo = new FileInfo(@"C:\Users\Surface\Desktop\test\" + originalFileName);// 파일의 정보를 담는 객체
+            fileSize = fInfo.Length; // 파일의 총 사이즈를 담는 변수
+
+            buffer_size = ((int)fileSize / 20) + 1; // 버퍼 사이즈 = 파일 사이즈 / 20
+
             try
             {
                 Stream sr = new FileStream(originalFilePath + originalFileName, FileMode.Open, FileAccess.Read); // StreamReader
@@ -168,7 +174,7 @@ namespace splitAndCombine
 
             sw.Flush();
             sw.Dispose();
-            System.IO.Directory.Delete(@"C:\Users\USER\Desktop\temp", true); // 임시 폴더 삭제
+            System.IO.Directory.Delete(@"C:\Users\Surface\Desktop\temp", true); // 임시 폴더 삭제
             System.Console.WriteLine("##########합치기완료##########");
         }
         
@@ -218,7 +224,7 @@ namespace splitAndCombine
                 System.IO.File.Copy(sourceFile, destFile, true);
             }
 
-            System.IO.Directory.Delete(@"C:\Users\USER\Desktop\temp", true); // 임시 폴더 삭제
+            //System.IO.Directory.Delete(@"C:\Users\Surface\Desktop\temp", true); // 임시 폴더 삭제
             System.Console.WriteLine("##########파일 분배 완료##########");
         }
     }
