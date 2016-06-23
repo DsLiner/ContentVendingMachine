@@ -10,3 +10,6 @@ C:\Users\Surface\Documents\GitHub\ContentVendingMachine\splitAndCombine\splitAnd
 C:\Users\Surface\Documents\GitHub\ContentVendingMachine\splitAndCombine\splitAndCombine\bin\Debug\splitAndCombine.exe
 C:\Users\Surface\Documents\GitHub\ContentVendingMachine\splitAndCombine\splitAndCombine\bin\Debug\splitAndCombine.pdb
 C:\Users\Surface\Documents\GitHub\ContentVendingMachine\splitAndCombine\splitAndCombine\obj\Debug\splitAndCombine.csprojResolveAssemblyReference.cache
+D:\GitHub\ContentVendingMachine\splitAndCombine\splitAndCombine\bin\Debug\splitAndCombine.exe.config
+D:\GitHub\ContentVendingMachine\splitAndCombine\splitAndCombine\obj\Debug\splitAndCombine.exe
+D:\GitHub\ContentVendingMachine\splitAndCombine\splitAndCombine\obj\Debug\splitAndCombine.pdb
